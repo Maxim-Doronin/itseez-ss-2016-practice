@@ -18,6 +18,11 @@ class ImageProcessor {
      const int kernelSize) = 0;
    virtual cv::Mat Pixelize(const cv::Mat &src, const cv::Rect &roi, 
      const int kDivs) = 0;
+   virtual cv::Mat DistanceTransform(const cv::Mat &src,
+     const int distLowThreshold, const int distHighThreshold,
+     const int distanceType, const int distMaskSize) = 0;
+   virtual cv::Mat AverageFilter(const cv::Mat &src) = 0;
+   virtual cv::Mat Convolution(const cv::Mat &src) = 0;
 };
 
 class ImageProcessorImpl : public ImageProcessor {
@@ -30,4 +35,9 @@ public:
 		const int kernelSize);
 	virtual cv::Mat Pixelize(const cv::Mat &src, const cv::Rect &roi,
 		const int kDivs);
+  virtual cv::Mat DistanceTransform(const cv::Mat &src,
+    const int distLowThreshold, const int distHighThreshold,
+    const int distanceType, const int distMaskSize);
+  virtual cv::Mat AverageFilter(const cv::Mat &src);
+  virtual cv::Mat Convolution(const cv::Mat &src);
 };
